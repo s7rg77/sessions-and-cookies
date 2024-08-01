@@ -27,27 +27,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sessions and cookies</title>
     <style>
+    html,
+    body {
+        margin: 0px;
+        padding: 0px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
     body {
         background-color: black;
         color: #00FF00;
         font-family: monospace;
         font-size: 16px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 
     h1,
     h2 {
         color: #FFFFFF;
         font-weight: normal;
+        text-align: center;
     }
 
-    #head {
+    header {
         margin-top: 10px;
-        margin-right: 10px;
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
+    }
+
+    main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .home,
@@ -78,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     button {
-        margin: 5px;
+        margin: 0px 5px;
         padding: 5px;
         width: 40%;
         border: none;
@@ -87,6 +100,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         cursor: pointer;
     }
 
+    .button {
+            margin: 5px;
+    }
+    
     p {
         color: #00FF00;
         text-align: center;
@@ -98,12 +115,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     footer {
-        bottom: 0px;
-        width: 100%;
-        background-color: #006400;
-        color: #00FF00;
-        text-align: center;
-        position: fixed;
+            width: 100vw;
+            background-color: #006400;
+            color: #00FF00;
+            text-align: center;
     }
     </style>
     <script>
@@ -128,30 +143,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <div id="head">
+    <header>
         <button class="doc" onclick="goDoc()">doc</button>
         <button class="git" onclick="goGit()">git</button>
         <button class="home" onclick="goHome()">back</button>
-    </div>
-    <h1>sessions and cookies</h1>
-    <h2>sergio lópez</h2>
-    <h2>login</h2>
-    <form method="post" action="login.php">
-        <label for="user">user</label><br>
-        <input type="text" id="user" name="user" required><br>
-        <label for="password">password</label><br>
-        <input type="password" id="password" name="password" required><br>
-        <button type="submit">login</button>
-    </form>
-    <p>correct user = foc</p>
-    <p>correct password = Fdwes!22</p>
-    <?php if (isset($mensaje_error)) : ?>
-    <p id="error"><?php echo $mensaje_error; ?></p>
-    <?php endif; ?>
-</body>
+    </header>
 
-<footer>
-    <h3>desarrollo web entorno servidor</h3>
-</footer>
+    <main>
+        <h1>sessions and cookies</h1>
+        <h2>sergio lópez</h2>
+        <h2>login</h2>
+        <form method="post" action="login.php">
+            <label for="user">user</label><br>
+            <input type="text" id="user" name="user" required><br>
+            <label for="password">password</label><br>
+            <input type="password" id="password" name="password" required><br>
+            <button class="button" type="submit">login</button>
+        </form>
+        <p>correct user = foc<br>correct password = Fdwes!22</p>
+        <?php if (isset($mensaje_error)) : ?>
+        <p id="error"><?php echo $mensaje_error; ?></p>
+        <?php endif; ?>
+    </main>
+
+    <footer>
+        <h3>desarrollo web entorno servidor</h3>
+    </footer>
+
+</body>
 
 </html>
